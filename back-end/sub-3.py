@@ -10,7 +10,7 @@ import datetime
 mydb = sql.connect(
     host = 'localhost',
     user = 'root',
-    password = '123456',
+    password = '251120',
     database = 'iot'
 )
 
@@ -40,6 +40,9 @@ def handle_mqtt_message(client, userdata, message):
 
 @app.route('/', methods=['GET'])
 def home():
+    """
+
+    """
     # return render_template('index.html')
     cursor = mydb.cursor(prepared = True)
     cursor.execute("SELECT * FROM `light` ORDER BY `time` DESC LIMIT 50")

@@ -17,7 +17,7 @@ export class RealTimeChart extends Component {
 	componentDidMount() {
 		var myChart = new Charting.Controls.AreaChart(this.el.current);
 
-		myChart.title = "My Chart";
+		myChart.title = "Chart";
 		myChart.theme.titleFontSize = 16;
 		myChart.theme.axisTitleFontSize = 14;
 		myChart.showLegend = false;
@@ -51,7 +51,7 @@ export class RealTimeChart extends Component {
 
 		var dataList = new Charting.Collections.List();
 
-		var intervalId = setInterval(this.updateStock.bind(this), 2000);
+		var intervalId = setInterval(this.updateStock.bind(this), 4000);
 		this.setState({ chart: myChart, data: dataList, intervalId: intervalId });
 		this.updateStock();
 	}
@@ -104,7 +104,7 @@ export class RealTimeChart extends Component {
 	render() {
 		return (
 			<div>
-				<canvas width="1000px" height="800px" ref={this.el}></canvas>
+				<canvas width="600px" height="400px" ref={this.el}></canvas>
 			</div>
 		);
 	}
