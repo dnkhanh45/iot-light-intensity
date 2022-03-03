@@ -10,6 +10,7 @@ export class RealTimeChart extends Component {
 		this.el = React.createRef();
 
 		this.state = {
+			series: props.series ? props.series["Time Series (1min)"] : null,
 			chart: null
 		}
 	}
@@ -17,7 +18,7 @@ export class RealTimeChart extends Component {
 	componentDidMount() {
 		var myChart = new Charting.Controls.AreaChart(this.el.current);
 
-		myChart.title = "My Chart";
+		myChart.title = "Chart";
 		myChart.theme.titleFontSize = 16;
 		myChart.theme.axisTitleFontSize = 14;
 		myChart.showLegend = false;
@@ -51,7 +52,7 @@ export class RealTimeChart extends Component {
 
 		var dataList = new Charting.Collections.List();
 
-		var intervalId = setInterval(this.updateStock.bind(this), 2000);
+		var intervalId = setInterval(this.updateStock.bind(this), 30000);
 		this.setState({ chart: myChart, data: dataList, intervalId: intervalId });
 		this.updateStock();
 	}
@@ -60,7 +61,7 @@ export class RealTimeChart extends Component {
 		// $.getJSON("https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=IBM&interval=1min&apikey=demo", function (json) {
 		$.getJSON("http://localhost:5000/", function (json) {
 
-			console.log(json);
+			// console.log(json);
 
 			var times = json["Time Series (1min)"];
 
@@ -70,7 +71,7 @@ export class RealTimeChart extends Component {
 				update = true;
 
 			for (var time in times) {
-				console.log(time);
+				// console.log(time);
 				var stock_info = times[time];
 
 				// var dataItem = new Charting.StockPrice(stock_info["1. open"], stock_info["4. close"], stock_info["3. low"],
@@ -78,7 +79,7 @@ export class RealTimeChart extends Component {
 				var dataItem = new Charting.StockPrice(stock_info["1. open"], "", "", "", new Date(time));
 
 				if (!update) {
-					console.log("update");
+					// console.log("update");
 					this.state.data.insert(0, dataItem);
 				}
 				else {
@@ -88,8 +89,8 @@ export class RealTimeChart extends Component {
 				}
 			}
 
-			console.log(this.state.data);
-			console.log(this.state.data["_items"]);
+			// console.log(this.state.data);
+			// console.log(this.state.data["_items"]);
 
 			var series = new Charting.StockPriceSeries(this.state.data);
 			series.dateTimeFormat = Charting.DateTimeFormat.ShortTime;
@@ -104,7 +105,7 @@ export class RealTimeChart extends Component {
 	render() {
 		return (
 			<div>
-				<canvas width="1000px" height="800px" ref={this.el}></canvas>
+				<canvas width="600px" height="400px" ref={this.el}></canvas>
 			</div>
 		);
 	}

@@ -1,0 +1,15 @@
+.App {
+    // background-color: #fff;
+    .title {
+        background-color: rgb(60, 40, 109);
+        display: flex;
+        .App-logo {
+            width: 200px;
+        }
+        .app-title {
+            font-size: 40px;
+            color: rgb(224, 33, 33);
+            margin-left: 15%;
+        }
+    }
+}

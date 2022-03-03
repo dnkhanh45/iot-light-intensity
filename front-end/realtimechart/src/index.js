@@ -4,8 +4,6 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-import {a, RealTimeChart} from './RealTimeChart';
-
 ReactDOM.render(
   <React.StrictMode>
     <App />

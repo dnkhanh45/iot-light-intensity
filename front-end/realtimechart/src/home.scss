@@ -1,0 +1,80 @@
+.home {
+  // background-color: rgb(185, 122, 166);
+  display: flex;
+  width: 100%;
+  height: 600px;
+  .chart-parent{
+    .date-time {
+      margin-left: 50%;
+      margin-right: 50%;
+    }
+    .Chart {
+      margin-left: 200px;
+      margin-top: 80px;
+      transform: scale(1.0);
+      // background-color: rgb(230, 28, 180);
+    }
+  }
+  .modify-numbers-of-light {
+    // background-color: rgb(114, 112, 112);
+    margin-top: 100px;
+    margin-left: 100px;
+    width: 300px;
+    height: 420px;
+    border-radius: 20%;
+    background-color: rgb(28, 230, 153);
+    .title {
+      margin-left: 30%;
+      margin-right: 30%;
+      width: 30%;
+      font-family: "Times New Roman", Times, serif;
+      background-color: rgb(28, 230, 153);
+      font-size: 30px;
+      font-weight: bold;
+      width: 150px;
+      padding: 24px 0;
+    }
+    .sub-title {
+      margin-left: 40%;
+      margin-right: 40%;
+      width: 50%;
+      font-family: "Times New Roman", Times, serif;
+      font-size: 24px;
+      font-weight: bold;
+    }
+    .button-update {
+      margin-left: 27.5%;
+      margin-right: 27.5%;
+      width: 50%;
+      padding: 24px 0;
+      font-size: 18px;
+      outline: none;
+      cursor: pointer;
+      border-radius: 50%;
+      border: none;
+      color: rgb(248, 246, 246);
+      background-color: rgb(230, 28, 28);
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 24px;
+      font-weight: bold;
+    }
+    .item-quantity {
+      margin-left: 18%;
+      margin-right: 18%;
+      width: 50%;
+      border-bottom: 1px solid rgba(0, 0, 0, 1.0);
+      height: 60px;
+      padding-left: 15%;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      font-size: xx-large;
+      font-weight: bold;
+      input {
+        font-size: 18px;
+        padding: 12px 20px;
+        border: rgba(221, 23, 23, 0.1) 1px solid;
+        outline: none;
+        float: right;
+      }
+    }
+  }
+}
