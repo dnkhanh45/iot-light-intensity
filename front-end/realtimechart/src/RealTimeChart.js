@@ -10,6 +10,7 @@ export class RealTimeChart extends Component {
 		this.el = React.createRef();
 
 		this.state = {
+			series: props.series ? props.series["Time Series (1min)"] : null,
 			chart: null
 		}
 	}
