@@ -6,7 +6,7 @@ from flask_mqtt import Mqtt
 import mysql.connector as sql
 import json
 import datetime
-
+from flask import request
 mydb = sql.connect(
     host = 'localhost',
     user = 'root',
@@ -59,6 +59,13 @@ def home():
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response
 
+# @app.route('https://jsonplaceholder.typicode.com/users', methods=['GET', 'POST'])
+# def getNumberChange():
+#     if request.method == 'POST':
+#         print(request)
+#     return "0"
+    # return response
+    
 if __name__ == '__main__':
     app.run(port=5000)
     # client.subscribe("esp8266/nhom_12_led_control", qos=1)

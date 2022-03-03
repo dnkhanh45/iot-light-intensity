@@ -60,7 +60,7 @@ export class RealTimeChart extends Component {
 		// $.getJSON("https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=IBM&interval=1min&apikey=demo", function (json) {
 		$.getJSON("http://localhost:5000/", function (json) {
 
-			console.log(json);
+			// console.log(json);
 
 			var times = json["Time Series (1min)"];
 
@@ -70,7 +70,7 @@ export class RealTimeChart extends Component {
 				update = true;
 
 			for (var time in times) {
-				console.log(time);
+				// console.log(time);
 				var stock_info = times[time];
 
 				// var dataItem = new Charting.StockPrice(stock_info["1. open"], stock_info["4. close"], stock_info["3. low"],
@@ -78,7 +78,7 @@ export class RealTimeChart extends Component {
 				var dataItem = new Charting.StockPrice(stock_info["1. open"], "", "", "", new Date(time));
 
 				if (!update) {
-					console.log("update");
+					// console.log("update");
 					this.state.data.insert(0, dataItem);
 				}
 				else {
@@ -88,8 +88,8 @@ export class RealTimeChart extends Component {
 				}
 			}
 
-			console.log(this.state.data);
-			console.log(this.state.data["_items"]);
+			// console.log(this.state.data);
+			// console.log(this.state.data["_items"]);
 
 			var series = new Charting.StockPriceSeries(this.state.data);
 			series.dateTimeFormat = Charting.DateTimeFormat.ShortTime;
