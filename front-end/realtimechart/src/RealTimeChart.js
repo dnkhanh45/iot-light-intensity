@@ -51,7 +51,7 @@ export class RealTimeChart extends Component {
 
 		var dataList = new Charting.Collections.List();
 
-		var intervalId = setInterval(this.updateStock.bind(this), 3000);
+		var intervalId = setInterval(this.updateStock.bind(this), 30000);
 		this.setState({ chart: myChart, data: dataList, intervalId: intervalId });
 		this.updateStock();
 	}
