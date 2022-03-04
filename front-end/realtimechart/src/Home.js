@@ -24,8 +24,8 @@ class Home extends React.Component {
     axios.get("http://localhost:5000/init").then(response => {
       console.log(response);
       this.setState({
-        min: response.data.min,
-        max: response.data.max,
+        min: Number(response.data.min),
+        max: Number(response.data.max),
         startDate: new Date('March 1, 2022 00:00:00'),
         currentDate: new Date(),
         endDate: new Date(),
@@ -42,10 +42,9 @@ class Home extends React.Component {
     var bodyFormData = new FormData();
     bodyFormData.append('time', date.getTime());
     axios.post("http://localhost:5000/", bodyFormData).then(response => {
-      console.log(response);
-      console.log(response.data);
+      console.log("count", Object.keys(response.data["timeSeries"]).length);
       this.setState({
-        series: response.data
+        series: response.data["timeSeries"]
       })
     })
   }
@@ -70,18 +69,21 @@ class Home extends React.Component {
     var bodyFormData = new FormData();
     bodyFormData.append('min', this.state.min);
     bodyFormData.append('max', this.state.max);
-    axios.post("http://localhost:5000/200", bodyFormData).then(response => {
+    axios.post("http://localhost:5000/update", bodyFormData).then(response => {
+      console.log("fe");
       console.log(response);
       console.log(response.data);
     })
   }
+
+
   render() {
-    // const [value, setValue] = React.useState(new Date('2014-08-18T21:11:54'));
     return (
       <div className="home">
         <div className="chart-parent">
           <div className="date-time">
             <DatePicker
+            wrapperClassName="datePicker"
               selected={this.state.currentDate}
               minDate={this.state.startDate}
               maxDate={this.state.endDate}
@@ -89,18 +91,14 @@ class Home extends React.Component {
               dateFormat="dd/MM/yyyy hh:mm aa"
               minTime={this.state.startDate.getTime()}
               maxTime={
-                (this.state.currentDate.getDay() == this.state.endDate.getDay()) ?
-                this.state.endDate.getTime() : new Date('March 1, 2022 23:59:59').getTime()
+                (this.state.currentDate.getDay() === this.state.endDate.getDay()) ?
+                  this.state.endDate.getTime() : new Date('March 1, 2022 23:59:59').getTime()
               }
-              // min={this.state.startDate.getTime()}
-              // max={this.state.endDate.getTime()}
               onChange={(date) => this.setStartDate(date)} />
-            {/* <TimePicker
-              value={value}
-              onChange={setValue} /> */}
           </div>
           <div className="Chart">
-            <RealTimeChart />
+            <RealTimeChart
+              series={this.state.series} />
           </div>
         </div>
         <div className="modify-numbers-of-light">

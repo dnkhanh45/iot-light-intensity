@@ -47,6 +47,32 @@ CREATE TABLE `light` (
 -- UNLOCK TABLES;
 
 
+
+--
+-- Table structure for table `bike`
+--
+
+DROP TABLE IF EXISTS `expectation`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `expectation` (
+  `time` TIMESTAMP NOT NULL,
+  `min` float NOT NULL,
+  `max` float NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+
+-- Dumping data for table `expectation`
+
+
+LOCK TABLES `expectation` WRITE;
+/*!40000 ALTER TABLE `expectation` DISABLE KEYS */;
+INSERT INTO `expectation` VALUES ('2022-03-01 00:00:00', 0.0, 100.0);
+/*!40000 ALTER TABLE `expectation` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
 /*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
