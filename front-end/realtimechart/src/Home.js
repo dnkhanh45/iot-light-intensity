@@ -83,7 +83,7 @@ class Home extends React.Component {
         <div className="chart-parent">
           <div className="date-time">
             <DatePicker
-            wrapperClassName="datePicker"
+              wrapperClassName="datePicker"
               selected={this.state.currentDate}
               minDate={this.state.startDate}
               maxDate={this.state.endDate}
@@ -98,6 +98,7 @@ class Home extends React.Component {
           </div>
           <div className="Chart">
             <RealTimeChart
+              currentDate={this.state.currentDate}
               series={this.state.series} />
           </div>
         </div>

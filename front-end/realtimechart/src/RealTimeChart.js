@@ -104,6 +104,7 @@ export class RealTimeChart extends Component {
 
 	render() {
 		const dataList = this.state.data;
+		var filename = String(this.props.currentDate);
 		var data = [];
 		for (var i in [...Array(dataList.count()).keys()]) {
 			var _dataItem = dataList.item(i);
@@ -115,8 +116,7 @@ export class RealTimeChart extends Component {
 				<canvas width="600px" height="400px" ref={this.el}></canvas>
 				<p></p>
 				<div>
-					<CSVLink data={data}>Get CSV</CSVLink>
-					<CSVDownload data={data} target="_blank" />
+					<CSVLink filename={filename + '.csv'} data={data}>Get CSV</CSVLink>
 				</div>
 			</div>
 		);
